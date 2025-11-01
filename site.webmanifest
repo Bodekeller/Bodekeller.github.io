@@ -1,0 +1,17 @@
+{
+  "name": "Bode Keller Portfolio",
+  "short_name": "Bode Keller",
+  "description": "Finance student at University of Minnesota Duluth specializing in corporate finance and data analysis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#4f7bff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

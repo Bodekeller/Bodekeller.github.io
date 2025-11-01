@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bode Keller — Contact</title>
+  <meta name="description" content="Contact Bode Keller through this form.">
+  <link rel="canonical" href="https://bodekeller.github.io/contact.html">
+  <meta property="og:title" content="Bode Keller — Contact">
+  <meta property="og:description" content="Contact Bode Keller through this form.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bodekeller.github.io/contact.html">
+  <meta property="og:image" content="https://bodekeller.github.io/photos/portrait.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bode Keller — Contact">
+  <meta name="twitter:description" content="Contact Bode Keller through this form.">
+  <meta name="twitter:image" content="https://bodekeller.github.io/photos/portrait.jpeg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="container navbar">
+      <a class="brand" href="/">
+        <img src="photos/portrait.jpeg" alt="Bode Keller">
+        <span>Bode Keller</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="discover.html">Discover</a>
+        <a href="resume.html">Resume</a>
+        <a href="career.html">Career</a>
+        <a href="game.html">Game</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Contact</h1>
+    <p>Please use this form to get in touch. I'll respond as soon as possible.</p>
+    
+    <form action="https://formspree.io/f/mnnnnnnn" method="POST" class="contact-form" style="max-width:600px;margin:24px 0">
+      <div style="margin-bottom:18px">
+        <label for="name" style="display:block;margin-bottom:6px;font-weight:600">Name</label>
+        <input type="text" id="name" name="name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:var(--panel);color:var(--text)">
+      </div>
+      <div style="margin-bottom:18px">
+        <label for="email" style="display:block;margin-bottom:6px;font-weight:600">Your Email</label>
+        <input type="email" id="email" name="email" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:var(--panel);color:var(--text)">
+      </div>
+      <div style="margin-bottom:18px">
+        <label for="message" style="display:block;margin-bottom:6px;font-weight:600">Message</label>
+        <textarea id="message" name="message" rows="6" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:var(--panel);color:var(--text);font-family:inherit"></textarea>
+      </div>
+      <button type="submit" class="btn" style="background:linear-gradient(135deg,var(--brand),var(--accent));color:#041025;padding:10px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer">Send Message</button>
+    </form>
+    
+    <p style="margin-top:24px;color:var(--muted);font-size:14px">
+      Note: This form uses Formspree. For direct email, use <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#114;&#101;&#101;&#114;&#64;&#98;&#111;&#100;&#101;&#107;&#101;&#108;&#108;&#101;&#114;&#46;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#105;&#111;" style="color:var(--brand)">career&#64;bodekeller&#46;github&#46;io</a>
+    </p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; <span data-year></span> Bode Keller</div>
+  </footer>
+
+  <script src="script.js" defer></script>
+
+  <audio id="bgMusic" src="good-night-lofi-cozy-chill-music-160166.mp3" loop preload="auto"></audio>
+  <button id="musicToggle" aria-label="Play music" aria-pressed="false">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <g class="icon-play">
+        <path d="M8 5v14l11-7z"/>
+      </g>
+      <g class="icon-pause">
+        <rect x="6" y="4" width="4" height="16" rx="1"/>
+        <rect x="14" y="4" width="4" height="16" rx="1"/>
+      </g>
+    </svg>
+  </button>
+</body>
+</html>
+

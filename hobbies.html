@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bode Keller — Hobbies</title>
+	<meta name="description" content="Bode Keller's hobbies and interests including sports, summer activities, and photography.">
+	<link rel="canonical" href="https://bodekeller.github.io/hobbies.html">
+	<meta property="og:title" content="Bode Keller — Hobbies">
+	<meta property="og:description" content="Bode Keller's hobbies and interests including sports, summer activities, and photography.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://bodekeller.github.io/hobbies.html">
+	<meta property="og:image" content="https://bodekeller.github.io/photos/portrait.jpeg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Bode Keller — Hobbies">
+	<meta name="twitter:description" content="Bode Keller's hobbies and interests including sports, summer activities, and photography.">
+	<meta name="twitter:image" content="https://bodekeller.github.io/photos/portrait.jpeg">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		/* Small page-specific tweaks */
+		main{padding:36px 0}
+		.hint{color:var(--muted);font-size:14px;margin-bottom:14px}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<div class="container navbar">
+			<a class="brand" href="/">
+				<img src="photos/portrait.jpeg" alt="Bode Keller">
+				<span>Bode Keller</span>
+			</a>
+			<nav class="nav-links" aria-label="Primary">
+				<a href="index.html">Home</a>
+				<a href="hobbies.html" aria-current="page">Hobbies</a>
+				<a href="discover.html">Discover</a>
+				<a href="resume.html">Resume</a>
+				<a href="career.html">Career</a>
+				<a href="game.html">Game</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+			<button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" style="display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:8px">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M3 12h18M3 6h18M3 18h18"/>
+				</svg>
+			</button>
+		</div>
+	</header>
+
+	<main id="main" class="container">
+		<h1>Hobbies & Interests</h1>
+		<p class="hint">Tip: Click any title or paragraph below to edit. Your changes will persist in local storage in this browser.</p>
+
+		<section class="hobby-edit" id="hobbyList">
+			<article class="hobby-item card" data-id="1">
+				<div style="display:flex;gap:12px;align-items:flex-start">
+					<div style="width:220px;flex:0 0 220px;">
+						<img class="hobby-photo" src="photos/baseball-field.jpeg" alt="Sports photo" width="220" height="165" loading="lazy" style="width:100%;border-radius:8px;display:block">
+					</div>
+					<div style="flex:1">
+						<h3 contenteditable="plaintext-only" aria-label="Hobby title">Sports</h3>
+						<p contenteditable="plaintext-only" aria-label="Hobby description">I like everything about sports, playing and watching. The most fun for me is basketball and football. Something about playing with my friends—it's not just exercise but it's fun and competitive. Watching sports is something I can always do no matter the game or time.</p>
+					</div>
+				</div>
+			</article>
+
+			<article class="hobby-item card" data-id="2">
+				<div style="display:flex;gap:12px;align-items:flex-start">
+					<div style="width:220px;flex:0 0 220px;">
+						<img class="hobby-photo" src="photos/water.jpeg" alt="Lake Superior" width="220" height="165" loading="lazy" style="width:100%;border-radius:8px;display:block">
+					</div>
+					<div style="flex:1">
+						<h3 contenteditable="plaintext-only">Summer Activities</h3>
+						<p contenteditable="plaintext-only">Summer is my favorite time to get outside and enjoy my favorite hobbies. I like spending my time with friends and family at the lake. Whether it's water activities or fishing, no matter what it will be fun. The best part of summer is the freedom and golf.</p>
+					</div>
+				</div>
+			</article>
+      
+						<article class="hobby-item card" data-id="3">
+							<div style="display:flex;gap:12px;align-items:flex-start">
+								<div style="width:220px;flex:0 0 220px;">
+									<img class="hobby-photo" src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f" alt="Photography" style="width:100%;border-radius:8px;display:block">
+								</div>
+								<div style="flex:1">
+									<h3 contenteditable="plaintext-only">Photography</h3>
+									<p contenteditable="plaintext-only">I enjoy capturing landscapes and candid moments with my camera. Photography helps me notice details and practice patience — I often take photos during trips around Duluth and at the lake.</p>
+								</div>
+							</div>
+						</article>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<div class="container">&copy; <span data-year></span> Bode Keller. All rights reserved.</div>
+	</footer>
+
+	<script>
+		// Simple local storage for editable hobby blocks (with per-hobby photos)
+		(function(){
+			const list = document.getElementById('hobbyList');
+			const storageKey = 'bkeller:hobbies:v1';
+
+			function getState(){
+				try{ 
+					const raw = localStorage.getItem(storageKey);
+					if (!raw) return null;
+					const parsed = JSON.parse(raw);
+					if (!Array.isArray(parsed)) return null;
+					return parsed;
+				}catch(e){
+					console.warn('Could not load hobbies from localStorage', e);
+					return null;
+				}
+			}
+			function setState(v){ 
+				if (!Array.isArray(v)) {
+					console.warn('Invalid hobbies data');
+					return;
+				}
+				try{ 
+					localStorage.setItem(storageKey, JSON.stringify(v));
+				}catch(e){
+					console.warn('Could not save hobbies', e);
+				}
+			}
+
+			function collect(){
+				return Array.from(list.querySelectorAll('.hobby-item')).map(el=>({
+					id: el.getAttribute('data-id'),
+					title: el.querySelector('h3')?.textContent || '',
+					desc: el.querySelector('p')?.textContent || '',
+					photo: el.querySelector('.hobby-photo')?.src || ''
+				}))
+			}
+
+			function render(state){
+				list.innerHTML = state.map(item=>`
+					<article class="hobby-item card" data-id="${item.id}">
+						<div style="display:flex;gap:12px;align-items:flex-start">
+							<div style="width:220px;flex:0 0 220px;">
+								<img class="hobby-photo" src="${item.photo ? item.photo : 'https://via.placeholder.com/440x280.png?text=No+Photo'}" alt="Hobby photo" style="width:100%;border-radius:8px;display:block">
+							</div>
+					<div style="flex:1">
+						<h3 contenteditable="plaintext-only">${escapeHtml(item.title)}</h3>
+						<p contenteditable="plaintext-only">${escapeHtml(item.desc)}</p>
+					</div>
+						</div>
+					</article>
+				`).join('')
+			}
+
+			function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;') }
+
+			// init
+			const saved = getState();
+			if (saved && Array.isArray(saved)) render(saved);
+
+			// persist on blur for contenteditable children
+			list.addEventListener('focusout', ()=>{
+				const state = collect();
+				setState(state);
+			});
+
+			// footer year
+			document.querySelector('[data-year]').textContent = new Date().getFullYear();
+		})();
+	</script>
+
+	<script src="script.js" defer></script>
+
+	<audio id="bgMusic" src="good-night-lofi-cozy-chill-music-160166.mp3" loop preload="auto"></audio>
+	<button id="musicToggle" aria-label="Play music" aria-pressed="false">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+			<g class="icon-play">
+				<path d="M8 5v14l11-7z"/>
+			</g>
+			<g class="icon-pause">
+				<rect x="6" y="4" width="4" height="16" rx="1"/>
+				<rect x="14" y="4" width="4" height="16" rx="1"/>
+			</g>
+		</svg>
+	</button>
+</body>
+</html>

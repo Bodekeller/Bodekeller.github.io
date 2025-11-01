@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Professional Portfolio</title>
+  <meta name="description" content="Professional introduction, hobbies, and a welcome video.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #0f1530;
+      --text: #e8ebf2;
+      --muted: #afb7c9;
+      --brand: #7aa2ff;
+      --accent: #79f6d5;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 14px;
+    }
+    .light {
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --text: #0f1530;
+      --muted: #4b5675;
+      --brand: #2952ff;
+      --accent: #0fb;
+      --shadow: 0 10px 26px rgba(16, 24, 40, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 100% -10%, rgba(122,162,255,0.12), transparent 60%),
+                  radial-gradient(900px 600px at -10% 110%, rgba(121,246,213,0.15), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .brand-logo {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: #0b1020; font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; opacity: 0.9; }
+    .nav-links a:hover { opacity: 1; color: var(--accent); }
+    .theme-toggle { border: 1px solid color-mix(in srgb, var(--text) 16%, transparent); background: var(--panel); color: var(--text); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; padding: 56px 0 24px; }
+    .hero h1 { font-size: clamp(28px, 4.4vw, 52px); line-height: 1.1; margin: 0 0 16px; }
+    .hero p { color: var(--muted); margin: 0 0 22px; font-size: clamp(14px, 1.6vw, 18px); }
+    .cta { display: flex; gap: 12px; align-items: center; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--accent)); color: #081221; border: 0; padding: 12px 18px; font-weight: 700; border-radius: 12px; cursor: pointer; box-shadow: var(--shadow); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid color-mix(in srgb, var(--text) 18%, transparent); padding: 12px 16px; border-radius: 12px; cursor: pointer; }
+
+    .card { background: color-mix(in srgb, var(--panel) 92%, transparent); border: 1px solid color-mix(in srgb, var(--text) 12%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .headshot {
+      aspect-ratio: 1/1; width: 100%; overflow: hidden; position: relative;
+      display: grid; place-items: center; isolation: isolate;
+    }
+    .headshot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ring { position: absolute; inset: -2px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--brand) 26%, transparent), transparent 70%); filter: blur(16px); z-index: -1; }
+
+    /* Video */
+    .video-section { padding: 40px 0; }
+    .video-card { padding: 18px; }
+    .video-wrapper { position: relative; border-radius: 12px; overflow: hidden; background: #000; }
+    .video-wrapper video { width: 100%; height: auto; display: block; }
+    .video-controls {
+      position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8, 12, 28, 0.4), rgba(8, 12, 28, 0));
+    }
+    .play-btn { pointer-events: auto; border: 0; border-radius: 999px; padding: 14px 18px; display: inline-flex; align-items: center; gap: 10px; font-weight: 800; cursor: pointer; color: #0b1020; background: linear-gradient(135deg, var(--accent), var(--brand)); box-shadow: var(--shadow); }
+    .video-caption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+    /* Hobbies */
+    .hobbies { padding: 24px 0 64px; }
+    .section-title { font-size: clamp(22px, 3vw, 32px); margin-bottom: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .hobby-card { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 14px; }
+    .hobby-img { width: 100%; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; background: #0a0a0a; display: grid; place-items: center; }
+    .hobby-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hobby-card h3 { margin: 0; }
+    .hobby-card p { margin: 0; color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid color-mix(in srgb, var(--text) 14%, transparent); padding: 26px 0; color: var(--muted); }
+
+    /* Utilities */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 600ms ease, transform 600ms ease; }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">P</div>
+        <span>Bode Keller</span>
+      </div>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#video">Welcome Video</a>
+        <a href="#hobbies">Hobbies</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-pressed="false">Toggle theme</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero / Intro -->
+    <section id="about" class="hero">
+    <div>
+      <h1>Hi, I’m Bode Keller</h1>
+        <p class="fade-in">Finance student at UMD specializing in corporate finance and data analysis. I enjoy solving complex problems, analyzing financial data, and building practical investment and business skills.</p>
+        <div class="cta fade-in" style="transition-delay: 120ms;">
+          <a class="btn-primary" href="#video">Watch welcome video</a>
+          <a class="btn-secondary" href="#hobbies">Explore hobbies</a>
+        </div>
+      </div>
+
+      <div class="card headshot fade-in" style="transition-delay: 80ms;">
+        <span class="ring" aria-hidden="true"></span>
+        <!-- Replace src with your own headshot file path -->
+        <img
+          src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0%' stop-color='%237aa2ff'/><stop offset='100%' stop-color='%2379f6d5'/></linearGradient></defs><rect width='100%' height='100%' fill='%23101530'/><circle cx='450' cy='360' r='160' fill='url(%23g)'/><text x='50%' y='78%' text-anchor='middle' fill='%23e8ebf2' font-size='48' font-family='Inter, Arial' font-weight='700'>Bode Keller</text></svg>"
+          alt="Professional headshot"
+        >
+      </div>
+    </section>
+
+    <!-- Welcome Video -->
+    <section id="video" class="video-section">
+      <div class="card video-card fade-in">
+        <div class="video-wrapper">
+          <!-- Replace the source with your own video file, e.g., media/welcome.mp4 -->
+          <video id="welcomeVideo" preload="metadata" poster="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720'><rect width='100%' height='100%' fill='%23000000'/><text x='50%' y='52%' text-anchor='middle' fill='%23ffffff' font-size='42' font-family='Inter, Arial' font-weight='700'>Welcome Video</text></svg>">
+            <source src="media/welcome.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-controls">
+            <button id="playBtn" class="play-btn" aria-controls="welcomeVideo" aria-label="Play or pause video">▶ Play</button>
+          </div>
+        </div>
+        <div class="video-caption">A quick hello and overview of who I am and what I do.</div>
+      </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies" class="hobbies">
+      <h2 class="section-title">A few things I enjoy</h2>
+      <div id="hobbyGrid" class="grid" aria-live="polite">
+        <!-- Hobbies will be populated here from localStorage (hobbies:v1) -->
+      </div>
+    </section>
+    <script>
+      (function renderHobbies(){
+        try{
+          var container = document.getElementById('hobbyGrid');
+          var raw = localStorage.getItem('bkeller:hobbies:v1');
+          var items = [];
+          if (raw) try { items = JSON.parse(raw); } catch(e){ items = [] }
+          if (!items || !items.length) {
+            // fallback: show static defaults
+            items = [
+              { title: 'Photography', desc: 'Capturing stories through light and composition—landscapes, portraits, and candid moments.', photo: '' },
+              { title: 'Cycling', desc: 'Exploring new routes, climbing hills, and chasing sunrise miles on two wheels.', photo: '' }
+            ];
+          }
+          container.innerHTML = items.map(function(it){
+            var photo = it.photo && it.photo.length ? it.photo : '';
+            var imgHtml = photo ? '<img src="'+photo+'" alt="'+(it.title||'hobby')+'" style="width:100%;height:100%;object-fit:cover;display:block">' : '';
+            return '<article class="card hobby-card fade-in"><div class="hobby-img">'+(photo?'<img src="'+photo+'" alt="'+(it.title||'hobby')+'">':'<div style="padding:28% 0;text-align:center;color:var(--muted)">No photo</div>')+'</div><h3>'+(it.title||'')+'</h3><p>'+(it.desc||'')+'</p></article>';
+          }).join('');
+        }catch(e){console.error(e)}
+      })();
+    </script>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Bode Keller. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Theme toggle with persistence
+    (function initTheme() {
+      var stored = localStorage.getItem('theme') || 'dark';
+      if (stored === 'light') document.documentElement.classList.add('light');
+      var toggle = document.getElementById('themeToggle');
+      function setTheme(next) {
+        if (next === 'light') document.documentElement.classList.add('light');
+        else document.documentElement.classList.remove('light');
+        localStorage.setItem('theme', next);
+        toggle.setAttribute('aria-pressed', String(next === 'light'));
+      }
+      toggle.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.contains('light');
+        setTheme(isLight ? 'dark' : 'light');
+      });
+      toggle.setAttribute('aria-pressed', String(stored === 'light'));
+    })();
+
+    // Reveal on scroll
+    (function initReveal() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+    })();
+
+    // Video play/pause button
+    (function initVideo() {
+      var video = document.getElementById('welcomeVideo');
+      var btn = document.getElementById('playBtn');
+      if (!video || !btn) return;
+      function updateLabel() { btn.textContent = video.paused ? '▶ Play' : '⏸ Pause'; }
+      btn.addEventListener('click', function () {
+        if (video.paused) video.play(); else video.pause();
+        updateLabel();
+      });
+      video.addEventListener('play', updateLabel);
+      video.addEventListener('pause', updateLabel);
+    })();
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
